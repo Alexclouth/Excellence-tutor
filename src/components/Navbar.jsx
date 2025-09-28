@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/90 shadow z-50">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
         {/* Logo */}
         <motion.a
           href="#home"
@@ -24,14 +24,18 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <img src={Logo} alt="Excellence Tutor Logo" className="w-20 h-14" />
-          <span className="text-3xl font-bold text-blue-900">
+          <img
+            src={Logo}
+            alt="Excellence Tutor Logo"
+            className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 object-contain"
+          />
+          <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">
             Excellence Tutor
           </span>
         </motion.a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link, index) => (
             <motion.a
               key={index}
@@ -47,24 +51,35 @@ export default function Navbar() {
 
           <motion.a
             href="tel:+251944331290"
-            className="ml-4 bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-semibold shadow hover:bg-yellow-300 transition"
-            animate={{ y: [0, -5, 0] }}
+            className="ml-4 bg-yellow-400 text-gray-900 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow hover:bg-yellow-300 transition whitespace-nowrap"
+            animate={{ y: [0, -10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
             📞 Call Us Now: 0944331290
           </motion.a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-3xl text-black focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? "✕" : "☰"}
-        </button>
+        {/* Mobile Menu & Call Button */}
+        <div className="flex md:hidden items-center gap-2">
+          <motion.a
+            href="tel:+251944331290"
+            className="bg-yellow-400 text-gray-900 px-3 py-2 rounded-lg font-semibold shadow hover:bg-yellow-300 transition whitespace-nowrap text-sm sm:text-base"
+            animate={{ y: [0, -5, 0] }}
+            transition={{ repeat: Infinity, duration: 1.2 }}
+          >
+            📞 0944331290
+          </motion.a>
+
+          <button
+            className="text-3xl text-black focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu with Framer Motion */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -72,7 +87,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="md:hidden bg-white shadow px-6 pb-4"
+            className="md:hidden bg-white shadow px-4 pb-4"
           >
             {navLinks.map((link, index) => (
               <motion.a
@@ -86,16 +101,6 @@ export default function Navbar() {
                 {link.name}
               </motion.a>
             ))}
-
-            <motion.a
-              href="tel:+251944331290"
-              className="block mt-3 bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-semibold shadow hover:bg-yellow-300 transition text-center"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              📞 Call Us Now
-            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
