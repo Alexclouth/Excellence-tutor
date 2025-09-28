@@ -6,34 +6,40 @@ import {
   ClockIcon,
 } from "@heroicons/react/24/solid";
 
+// Import images at the top
+import ElementaryImg from "../assets/elementarystud.jpg";
+import PrepImg from "../assets/prepstud.jpg";
+import ExamPrepImg from "../assets/examprep.png";
+import OneToOneImg from "../assets/1to1.webp";
+
 const services = [
   {
     title: "KG – Grade 8",
     desc: "Math, Science, English, Amharic, and more.",
     amharic: "ሒሳብ፣ ሳይንስ፣ እንግሊዝኛ፣ አማርኛ እና ሌሎች።",
     icon: BookOpenIcon,
-    image: "./src/assets/elementarystud.jpg",
+    image: ElementaryImg,
   },
   {
     title: "Grade 9 – 12",
     desc: "All preparatory subjects",
     amharic: "ለሁለተኛ ደረጃ ተማሪዎች ሁሉንም የትምህርት አይነቶች።",
     icon: AcademicCapIcon,
-    image: "./src/assets/prepstud.jpg",
+    image: PrepImg,
   },
   {
     title: "Exam Prep",
     desc: "Personalized coaching for school and national exams.",
     amharic: "ለ6፣ ለ8 እና ለ12ኛ ክፍል ተፈታኞች ልዩ ትኩረት እንሰጣለን።",
     icon: UserGroupIcon,
-    image: "./src/assets/examprep.png",
+    image: ExamPrepImg,
   },
   {
     title: "Flexible Learning",
     desc: "One-to-one or group tutoring, at your home.",
     amharic: "አንድ ለአንድ ወይም በቡድን የማስጠናት አገልግሎት እንሰጣለን።",
     icon: ClockIcon,
-    image: "./src/assets/1to1.webp",
+    image: OneToOneImg,
   },
 ];
 
@@ -63,7 +69,7 @@ export default function Services() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }} // 👈 animate on scroll
+              viewport={{ once: true, amount: 0.3 }} // animate on scroll
               transition={{ duration: 0.6, delay: i * 0.2 }}
               whileHover={{ scale: 1.05 }}
             >
@@ -74,17 +80,15 @@ export default function Services() {
                   alt={s.title}
                   className="w-full h-40 object-cover"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent"></div>
               </div>
 
               {/* Content */}
-              <div className="p-3 text-center">
+              <div className="p-4 text-center">
                 <div className="flex justify-center">
                   <Icon className="w-12 h-12 text-blue-600 mb-4" />
                 </div>
-                <h3 className="text-xl font-semibold text-blue-800">
-                  {s.title}
-                </h3>
+                <h3 className="text-xl font-semibold text-blue-800">{s.title}</h3>
                 <p className="mt-2 text-gray-700">{s.desc}</p>
                 <p className="mt-1 text-gray-500 italic">{s.amharic}</p>
               </div>

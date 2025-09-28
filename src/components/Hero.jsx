@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import herobg  from "../assets/heroimg.webp";
 
 export default function Hero() {
   // Typing effect messages
@@ -33,7 +34,7 @@ export default function Hero() {
     <section
       className="relative bg-center bg-cover text-white py-20 px-6 mt-20"
       style={{
-        backgroundImage: "url('./src/assets/heroimg.webp')",
+        backgroundImage: `url('${herobg}')`,
       }}
     >
       {/* Blue overlay with animation */}
